@@ -5,43 +5,52 @@ import axios from 'axios';
 
 function App() {
   
-  const [ticketsShown,setTicketsShown] = useState();
-  let tickets = [];
+  const [ticketsShown,setTicketsShown] = useState([]);
 
   useEffect(()=>{
     showTicketsFromServer()
   },[]);
 
   const showTickets = (ticketsArr) => {
-    tickets =ticketsArr;
     ticketsArr = ticketsArr.map( ticket => {
       return <Ticket key={ticket.id} ticket={ticket} handleClick={hideTicketByClick} />
     });
-    setTicketsShown(ticketsArr);
+    return ticketsArr;
   }
 
+  const visualTickets = ticketsShown.filter(ticket=> !ticket.hide)
+  const hidedenTicketsCounter = ticketsShown.length - visualTickets.length;
 
   const showTicketsFromServer = async () => {
     let ticketsArray = await (await axios.get('/api/tickets')).data;
-    showTickets(ticketsArray)
+    setTicketsShown(ticketsArray)
   }
 
   const showTicketByTitle = async (title) => {
     let searchTicketsArray = await (await axios.get(`/api/tickets?searchText=${title}`)).data;
-    showTickets(searchTicketsArray)
+    setTicketsShown(searchTicketsArray)
   }
 
   const hideTicketByClick = (ticketId )=> {
-    let hideArray = tickets.map(ticket => {
+    let hideArray = ticketsShown.map(ticket => {
       return ticket.id === ticketId ? { ...ticket , hide : true } : ticket ;
     })
-    showTickets(hideArray.filter(ticket => !ticket.hide))
+    setTicketsShown(hideArray)
+  }
+
+  const restoreHiddenTickets = () =>{
+    let restorArray = ticketsShown.map(ticket => {
+      return   {...ticket , hide : false }  ;
+    })
+    setTicketsShown(restorArray)
   }
 
   return (
     <main>
       <input type='search' id='searchInput' placeholder='search' onChange={(e)=>showTicketByTitle(e.target.value)}/>
-      {ticketsShown}
+      <button id='restoreHideTickets' onClick={()=>restoreHiddenTickets()}>restore</button>
+      <div id='hideTicketsCounter'>{hidedenTicketsCounter}</div>
+      {showTickets(visualTickets)}
     </main>
   );
 }

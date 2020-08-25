@@ -9,7 +9,7 @@ function Ticket({ ticket, handleClick }) {
 
     return (
         <div className="ticket">
-            <button id='hideTicketButton' onClick={()=>handleClick(ticket.id)}>HIDE</button>
+            <button className='hideTicketButton' onClick={()=>handleClick(ticket.id)}>HIDE</button>
             id: {ticket.id}, <br />
             title: {ticket.title},<br />
             creation: { ticket.creationTime}<br />
