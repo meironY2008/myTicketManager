@@ -47,10 +47,18 @@ function App() {
 
   return (
     <main>
-      <input type='search' id='searchInput' placeholder='search' onChange={(e)=>showTicketByTitle(e.target.value)}/>
-      <button id='restoreHideTickets' onClick={()=>restoreHiddenTickets()}>restore</button>
-      <div id='hideTicketsCounter'>{hidedenTicketsCounter}</div>
+      <div id='header'>
+        <input type='search' id='searchInput' placeholder='search' onChange={(e)=>showTicketByTitle(e.target.value)}/>
+        <section id='hidden-section'>
+          <div id='hideTicketsCounter'>{hidedenTicketsCounter}</div>
+          {hidedenTicketsCounter ? <div>Hidden tickets:</div>:<div></div>}
+          <div id='restoreHideTickets' onClick={()=>restoreHiddenTickets()}>restore</div>
+        </section>
+      </div>
+      <section id='ticket-section'>
       {showTickets(visualTickets)}
+      </section>
+     
     </main>
   );
 }
