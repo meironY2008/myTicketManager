@@ -17,34 +17,58 @@
 #hidden-section{
     align-self: flex-end;
     display: flex;
+    padding: 10px;
     width: 30%;
     flex-flow: row wrap;
     justify-content: space-evenly;
-}
-#hideTicketsCounter{
-    padding: 10px;
-}
-#restoreHideTickets{
-    padding: 10px;
-    font-size: 17px;
-    cursor: pointer;
+    font-size: 18px;
     color: #ece7e7;
+    font-weight: bold;
 }
-#restoreHideTickets:hover{
-    padding: 8px;
-    cursor: pointer;
-    color: #ece7e7;
-    font-size: 20px;
-}
-#ticket-section{
-    margin-top: 100px;
-    top:100px;
-    flex-flow: row wrap;
 
+#hideTicketsCounter{
+    order :1;
+    color: #ece7e7;
+    
+}
+
+#restoreHideTickets{
+    order: 2;
+    cursor: pointer;
+    color: #ece7e7;
+}
+
+#restoreHideTickets:hover{
+    cursor: pointer;
+    color: #ece7e7;
+}
+
+#ticket-section{
+    margin-top: 140px;
+    top:100px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
 }
 
 .ticket {
-    /* flex-flow: row wrap; */
+    flex-flow: row wrap;
+    margin: 50px;
+    border: mediumvioletred solid 2px;
+    padding: 20px;
+    width: 500px;
+    min-height: 300px;
+
     
+}
+.show-more{
+    color: darkblue;
     
+}
+
+.show-more:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    color: darkblue;
+
 }
