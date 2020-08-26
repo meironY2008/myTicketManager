@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Ticket from './components/Ticket'
 import './App.css';
 import axios from 'axios';
+import maskEmojy from './maskEmojy.png'
 
 function App() {
   
@@ -47,12 +48,20 @@ function App() {
 
   return (
     <main>
+      <div id='app-top'>
+        <div id='top-left'>
+          <img id='mask-image' src={maskEmojy} alt='mask emojy'/>
+          <h1>task maneger</h1>
+        </div>
+        <a id='link' href='https://github.com/meironY2008' target='_blank' rel='noopener noreferrer'
+>@meironY2008/github</a>
+      </div>
       <div id='header'>
         <input type='search' id='searchInput' placeholder='search' onChange={(e)=>showTicketByTitle(e.target.value)}/>
         <section id='hidden-section'>
           <div id='hideTicketsCounter'>{hidedenTicketsCounter}</div>
           {hidedenTicketsCounter ? <div>Hidden tickets:</div>:<div></div>}
-          <div id='restoreHideTickets' onClick={()=>restoreHiddenTickets()}>restore</div>
+          <div id='restoreHideTickets' onClick={()=>restoreHiddenTickets()}>Restore</div>
         </section>
       </div>
       <section id='ticket-section'>

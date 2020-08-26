@@ -26,37 +26,35 @@ function Ticket({ ticket, handleClick }) {
 
   return (
     <div className="ticket">
-      <button
-        className="hideTicketButton"
-        onClick={() => handleClick(ticket.id)}
-      >
+        <div className='ticket-top'>
+        <h2 >{ticket.title}</h2>
+        <div className="hideTicketButton" onClick={() => handleClick(ticket.id)}>
         HIDE
-      </button>
-      id: {ticket.id}, <br />
-      <h1>{ticket.title}</h1>
-      <br />
-      creation: {showFullDate(ticket.creationTime)}
-      <br />
-      mail: {ticket.userEmail}
-      <br />
-      content:{" "}
+      </div>
+        </div>
+      
+      
       {showMoreFlag ? (
-        <div>
+        <div className="content">
           {ticket.content}
           <div className="show-more" onClick={() => showMore()}>
             show less
           </div>{" "}
         </div>
       ) : (
-        <div>
+        <div className="content">
           <div> {ticket.content.substring(0, 100)} </div>{" "}
           <div className="show-more" onClick={() => showMore()}>
             show more...
           </div>
         </div>
       )}
-      {ticket.labels && <div> labels: {showLabel(ticket)}</div>}
-      <br />
+      <div className="ticket-bottom">
+          <div className='writer-details'>{showFullDate(ticket.creationTime)} | {ticket.userEmail}</div>
+        <div className="label-container">
+          {ticket.labels && showLabel(ticket)}
+        </div>
+      </div>
     </div>
   );
 }
