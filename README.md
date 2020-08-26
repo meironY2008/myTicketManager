@@ -63,3 +63,10 @@ Use a popular style guide - Airbnb
 * Visual creativity, use css to make this app look awesome 💅🏿
 * Code quality: Variable naming, meaningful comments, logic separation into functions
 * Git usage: commit messages, and overall git usage flow
+
+glinch:
+https://splashy-wakeful-crime.glitch.me
+
+gif:
+
+![](readme-files/task-manager-meiron.gif)
