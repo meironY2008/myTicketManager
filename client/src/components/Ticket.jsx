@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-//import './App.css';
+import React, { useState } from 'react';
 
 function Ticket({ ticket, handleClick }) {
   const [showMoreFlag, setShowMoreFlag] = useState(false);
@@ -12,13 +11,11 @@ function Ticket({ ticket, handleClick }) {
         ${createdAt.getHours()}:${createdAt.getMinutes()}:${createdAt.getSeconds()}`;
   };
 
-  const showLabel = (ticket) => {
-    return ticket.labels.map((label) => (
-      <div className="label" key={label}>
-        {label}
-      </div>
-    ));
-  };
+  const showLabel = (tickets) => tickets.labels.map((label) => (
+    <div className="label" key={label}>
+      {label}
+    </div>
+  ));
 
   const showMore = () => {
     setShowMoreFlag(!showMoreFlag);
@@ -26,31 +23,42 @@ function Ticket({ ticket, handleClick }) {
 
   return (
     <div className="ticket">
-        <div className='ticket-top'>
-        <h2 >{ticket.title}</h2>
+      <div className="ticket-top">
+        <h2>{ticket.title}</h2>
         <div className="hideTicketButton" onClick={() => handleClick(ticket.id)}>
-        HIDE
-      </div>
+          HIDE
         </div>
-      
-      
+      </div>
+
       {showMoreFlag ? (
         <div className="content">
           {ticket.content}
           <div className="show-more" onClick={() => showMore()}>
             show less
-          </div>{" "}
+          </div>
+          {' '}
         </div>
       ) : (
         <div className="content">
-          <div> {ticket.content.substring(0, 100)} </div>{" "}
+          <div>
+            {' '}
+            {ticket.content.substring(0, 100)}
+            {' '}
+          </div>
+          {' '}
           <div className="show-more" onClick={() => showMore()}>
             show more...
           </div>
         </div>
       )}
       <div className="ticket-bottom">
-          <div className='writer-details'>{showFullDate(ticket.creationTime)} | {ticket.userEmail}</div>
+        <div className="writer-details">
+          {showFullDate(ticket.creationTime)}
+          {' '}
+          |
+          {' '}
+          {ticket.userEmail}
+        </div>
         <div className="label-container">
           {ticket.labels && showLabel(ticket)}
         </div>

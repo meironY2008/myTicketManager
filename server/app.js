@@ -1,6 +1,6 @@
 const express = require('express');
 const fs = require('fs').promises;
-// const url = require('url');
+
 
 const app = express();
 
@@ -12,7 +12,8 @@ app.get('/api/tickets/', async (req, res) => {
   const ticketArray = JSON.parse(ticketJson);
   const { searchText } = req.query;
   if (searchText) {
-    const filterTickectsArray = ticketArray.filter((ticket) => ticket.title.toLowerCase().includes(searchText.toLowerCase()));
+    const filterTickectsArray = ticketArray.filter((ticket) => (
+      ticket.title.toLowerCase().includes(searchText.toLowerCase())));
     res.send(filterTickectsArray);
   } else {
     res.send(ticketArray);
