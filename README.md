@@ -65,7 +65,7 @@ Use a popular style guide - Airbnb
 * Git usage: commit messages, and overall git usage flow
 
 glinch:
-https://splashy-wakeful-crime.glitch.me
+https://gratis-excited-bite.glitch.me
 
 gif:
 
